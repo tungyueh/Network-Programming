@@ -1,0 +1,49 @@
+HW2 UDP Reliable File Transfer
+
+ +   Overview    +
+
+In this homework, you will build up a UDP connection to transfer specific file. 
+You should use 3 different timeout methods to test if there is any packet loss 
+during the transmission. As the real-world packets are not easy to manipulate, 
+we will use EstiNet network simulator to simulate the network situation. 
+
+In this homework, the network topology will simply drop packets. No delay or 
+reordering packets will be occurred. You can implement a simpler version for 
+this homework. As contract, delay and reordering packets will need to be process
+when the competition we hold around January 2013 and the bandwidth/time 
+efficiency of that competition will be an important issue.
+
+You should use 3 different timeout methods in this homework, therefore you should
+hand-in 3 different program codes to complete this homework. Besides, you should 
+write a report around 250~350 word to explain your implementation. 
+
+The due day will be 12/14 23:59
+
+ + Specification +
+
+You should hand-in 6 different codes, 3 different timeout methods and each method 
+should have a program that is responsible for file uploading, and another for file 
+downloading. Note that you should use UDP connection only. 
+
+1.	Timeout using SIGALRM      (30%)
+2.	Timeout using select       (30%)
+3.	Timeout using setsockopt   (30%)
+    (Report and demo for 10%)
+
+Every uploading program should read file from "/tmp/input.tar" and write file to 
+"received.tar".
+
+Use EstiNet network simulator introduced in the HW2 guide.pdf to simulate the packet
+loss environment. As TA will run your program on EstiNet and check the file received
+is no different from the input, you should test your program under circumstance below:
+
+* Link delay: 15000us
+* Link bandwidth: 100Mbps
+* Packet loss rate: 8% on both sides
+* Random number seed: 18353
+
+Because of the new policy, CS department has built a system for detecting software 
+plagiarism. We will input everyone's code to that system. Make sure your code is safe 
+with yourself, and there will be punishment for those students steals others codes. 
+
+Please don't take any chance coping your friends' work.

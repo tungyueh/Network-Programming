@@ -1,0 +1,82 @@
++   Overview   +
+   In this homework, you should write a TCP broadcast-echo server and a TCP
+   echo client in non-blocking mode.
+
+
++   Specification   +
+
+--------------------------------------------------------------------------------
+
+***   Server   ***
+
+*  Execution format: server <port number>
+
+*  The server do either accept a connection or broadcast the message it receives.
+
+*  While accepting a connection, the server should set the connection to the
+   non-blocking mode, so that the connection would not be blocked while writing/reading.
+
+*  While receiving a message from a client, the server tries to broadcast the message
+   to all clients. If it fails, the server should save the message temporarily, and
+   try to send the message again next time.
+
+-------------------------------------------------------------------------------
+
+***   Client   ***
+
+*  Execution format: client <IP address> <port number>
+
+*  The client can receive message from stdin (default is the keyboard).
+   When the client receives message from stdin, the client tries to send it to the server.
+   If it fails, it should save the message temporarily, and try to send the message again
+   next time.
+
+*  The client can also receive message from the server.
+   When the client receives message from the server, it writes it to stdout (default is the screen).
+
+
+
++   Testing   +
+
+   To test if your program is correct, you may download the client program that TAs provided below:
+
+   http://www.cs.nctu.edu.tw/~lwcheng/no_read_client.cpp
+   http://www.cs.nctu.edu.tw/~lwcheng/a_big_file
+
+   This client is almost the same as normal client but without receiving message from the server.
+   It will cause the server writing message to it fails.
+   The "a_big_file" is just a big file for the testing.
+
+Usage:
+   Assume that the server is running on 140.113.55.66 and listening on port 5566,
+   and "your_client" is the client program you writed.
+
+   $ make no_read_client
+   $ ./your_client 140.113.55.66 5566
+   $ ./no_read_client 140.113.55.66 5566 <a_big_file
+
+   Then the stdin of no_read_client is redirected to the file "a_big_file".
+	
+   After steps above, your echo client should act normally, which means you can
+   type some messages and see your messages back on the screen.
+
+
++   Requirement   +
+
+*  You should use non-blocking TCP to implement your homework.
+   DO NOT use fork or thread.
+
+
++   Due date   +
+
+   2013/01/11 23:59
+  
+   Hand-in format: Please put your clode into a directory named by your student ID
+                   and use "tar" command to tar your source code.
+
+   Upload name format: <Student ID>_<Version>.tar
+
+
++   Demo   +
+
+   Demo will be announced later.
